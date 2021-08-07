@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Electrolize');
+
+html{
+    /* overflow-x: hidden; */
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Electrolize';
+    font-size: 18px;
+}
+
+.home-container{
+    max-width: 800px;
+}
+
+@media(max-width: 800px){
+    .home-container{
+        max-width: 85%;
+    }
+}
+
+.separator{
+    height:2px;
+    background:black;
+    margin:auto
+}

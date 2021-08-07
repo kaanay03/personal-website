@@ -1,0 +1,8 @@
+.social-icon{
+    font-size: 30px !important;
+    color: gray !important;
+}
+
+.social-icon:hover{
+    color: black !important;
+}

@@ -1,0 +1,17 @@
+.post-card{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.blog-link{
+    color: gray;
+}
+
+.blog-link:hover{
+    color: black !important;
+}
+
+#load-more:hover{
+    background: transparent;
+    color: black;
+}

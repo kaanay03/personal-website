@@ -1,0 +1,25 @@
+.home-nav-link{
+    color: black;
+    text-decoration: none !important;
+    font-size: 27px;
+    background: none;
+    border: none;
+}
+
+#home-nav-container{
+    margin-top: 95px; 
+    max-width: 1000px;
+}
+
+.home-nav-col{
+    margin-bottom: 10px;
+}
+
+.home-nav-link-btn{
+    background: none;
+    border: none;
+}
+
+.home-nav-link-btn:hover{
+    color: gray;
+}
