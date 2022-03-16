@@ -13,7 +13,7 @@ function Footer(){
     }, [])
     return(
         <div id="footer-container" className="text-center">
-            Copyright © 2020 Kaan Aydogan <br />
+            Copyright © {new Date().getFullYear()} Kaan Aydogan <br />
             <Link id="privacy-link" to="/privacy">Privacy Policy</Link>
         </div>
     )

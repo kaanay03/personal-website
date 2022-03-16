@@ -11,7 +11,6 @@ function Blog(){
 
     useEffect(() => {
         getPosts();
-        // console.log(posts)
         if (displayedPosts.length === 0){
             setDisplayedPosts([...posts].splice(0, postChunkSize));
         }
@@ -33,11 +32,8 @@ function Blog(){
 
     function loadMore(){
         let endIdx = Math.min(posts.length, (displayedPosts.length + postChunkSize));
-        console.log(`End idx: ${endIdx}`)
         setDisplayedPosts([...posts].splice(0, endIdx));
     }
-
-    console.log(posts);
 
     return(
         <div id="blog-content" className="text-center">

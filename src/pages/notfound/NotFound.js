@@ -4,7 +4,6 @@ import { Link } from  'react-router-dom';
 function NotFound(){
     return(
         <div id="404-content" className="text-center">
-            {/* <h1 id="name-heading" className="text-center" style={{'fontSize': '35px'}}>Not Found</h1> */}
             <div className="container home-container mt-5 post-container">
                 <div className="text-center">
                     <p style={{"fontSize": "100px"}}>404</p>
