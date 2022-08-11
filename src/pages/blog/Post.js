@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import NotFound from '../notfound/NotFound';
-const Cosmic = require('cosmicjs')()
+const Cosmic = require('cosmicjs')();
 
-function Post(){
+function Post() {
     let { slug } = useParams();
     const [post, setPost] = useState();
 
@@ -13,7 +13,7 @@ function Post(){
         getPost();
     }, [])
 
-    const getPost = async ()=>{
+    const getPost = async () => {
         Cosmic.bucket({
             'slug': 'kaanxyz',
             'read_key': process.env.REACT_APP_READ_KEY
@@ -27,10 +27,10 @@ function Post(){
             setPost(data.objects[0]);
         }).catch(error =>{
             setPost(error);
-        })
+        });
     }
 
-    if (post && post.status === 404){
+    if (post && post.status === 404) {
         return <NotFound />
     }
 

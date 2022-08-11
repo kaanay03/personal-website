@@ -1,36 +1,46 @@
 import './Blog.css';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-const Cosmic = require('cosmicjs')()
+const Cosmic = require('cosmicjs')();
 
 const postChunkSize = 4;
 
-function Blog(){
+function Blog() {
     const [posts, setPosts] = useState([]);
     const [displayedPosts, setDisplayedPosts] = useState([]);
 
-    useEffect(() => {
-        getPosts();
-        if (displayedPosts.length === 0){
-            setDisplayedPosts([...posts].splice(0, postChunkSize));
-        }
-    }, [posts, displayedPosts])
+    let syncPosts = [];
 
-    const getPosts = async ()=>{
-        Cosmic.bucket({
-            'slug': 'kaanxyz',
-            'read_key': process.env.REACT_APP_READ_KEY
-        }).getObjects({
-            query:{
-                type: "posts"
-            },
-            props: "title,created_at,slug,metadata.description"
-        }).then(data =>{
-            setPosts(data.objects);
-        })
+    useEffect(() => {
+        getPosts()
+            .then(() => {
+                if (displayedPosts.length === 0){
+                    let usePosts = (posts.length === 0) ? syncPosts : posts;
+                    setDisplayedPosts([...usePosts].splice(0, postChunkSize));
+                }
+            });
+    }, []);
+
+    const getPosts = async () => {
+        return new Promise((resolve) => {
+            Cosmic.bucket({
+                'slug': 'kaanxyz',
+                'read_key': process.env.REACT_APP_READ_KEY
+            }).getObjects({
+                query:{
+                    type: "posts"
+                },
+                props: "title,created_at,slug,metadata.description"
+            }).then(data => {
+                syncPosts = data.objects;
+                setPosts(data.objects);
+                resolve();
+            })
+        });
+
     }
 
-    function loadMore(){
+    function loadMore() {
         let endIdx = Math.min(posts.length, (displayedPosts.length + postChunkSize));
         setDisplayedPosts([...posts].splice(0, endIdx));
     }
